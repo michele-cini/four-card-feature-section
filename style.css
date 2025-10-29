@@ -14,24 +14,28 @@ body {
     font-family: "Poppins", sans-serif;
     font-size: 0.9375rem;
     background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-main {
+article {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     padding: 3em 2em;
+    width: 100%;
 }
 
-section {
+.cards {
     display: grid;
     gap: 2em;
     margin-top: 3.5em;
 }
 
-section > div {
+.cards > div {
     border-radius: 0.5em; 
     box-shadow: 0 1em 1em -0.25em hsl(from color-mix(in hsl, var(--blue) 50%, var(--grey-400)) h s l / 0.2);
     font-size: 0.875em;
@@ -121,9 +125,55 @@ h1 {
     font-size: 99%;
 }
 
-@media screen and (min-width: 25em) {
-    section {
+@media screen and (min-width: 60em) {
+
+    main {
+        container-type: inline-size;
+        width: clamp(40rem, 85vw, 100vw);
+    }
+
+    article {
+        font-size: clamp(0.8rem, 1.3cqi, 1.3cqi)
+    }
+
+    h1 {
+        font-size: 3.25cqi;
+    }
+
+    .preamble {
+        width: 50%;
+    }
+
+    .cards {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, 1fr);
+        grid-template-areas: 
+        ". red ."
+        "green red blue"
+        "green orange blue"
+        ". orange .";
+        width: 100%;
+        margin-top: 4em;
     }
+
+    .green {
+        grid-column: 1;
+        grid-area: green;
+    }
+
+    .red {
+        grid-column: 2;
+        grid-area: red;
+    }
+
+    .orange {
+        grid-column: 2;
+        grid-area: orange;
+    }
+
+    .blue {
+        grid-column: 3;
+        grid-area: blue;
+    }
+
 }
